@@ -21,6 +21,7 @@
 		<module>microservices-eureka</module>
 		<module>microservices-admin</module>
 		<module>microservices-gateway</module>
+		<module>microservice-retail</module>
 	</modules>
 
 	<properties>
