@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>com.ista</groupId>
 		<artifactId>microservices</artifactId>
-		<version>1.0</version>
+		<version>1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.ista.gateway</groupId>
 	<artifactId>microservices-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1-SNAPSHOT</version>
 	<name>microservices-gateway</name>
 	<description>Microservices Gateway</description>
 	<url/>

@@ -15,5 +15,6 @@ public class Clasificacion {
     @Setter(AccessLevel.NONE)
     private Long id;
 
+    private String grupo;
 
 }

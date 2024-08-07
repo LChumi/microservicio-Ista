@@ -10,7 +10,7 @@
 
 	<groupId>com.ista</groupId>
 	<artifactId>microservices</artifactId>
-	<version>1.0</version>
+	<version>1-SNAPSHOT</version>
 
 	<name>microservices</name>
 	<description>Microservices</description>

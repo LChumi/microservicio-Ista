@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.ista</groupId>
 		<artifactId>microservices</artifactId>
-		<version>1.0</version>
+		<version>1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.ista.retail</groupId>
 	<artifactId>microservice-retail</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1-SNAPSHOT</version>
 	<name>microservice-retail</name>
 	<description>Microservice Retail</description>
 	<url/>
