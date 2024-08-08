@@ -21,7 +21,7 @@ public class TipoPago {
     private String tipo;
     private String descripcion;
 
-    @OneToMany(mappedBy = "tipo_pago", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoPago", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Factura> facturas;
 
