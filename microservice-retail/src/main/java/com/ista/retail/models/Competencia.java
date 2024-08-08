@@ -21,6 +21,6 @@ public class Competencia {
     private String nombre;
     private String descripcion;
 
-    @ManyToMany(mappedBy = "competencia")
+    @ManyToMany(mappedBy = "competencias")
     private List<Rol> roles = new ArrayList<>();
 }
