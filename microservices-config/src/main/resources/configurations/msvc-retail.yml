@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:postgresql://java_db:5432/postgres
     username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:postgres}
+    password: ${DATABASE_PASSWORD:1234}
 
   jpa:
     hibernate:

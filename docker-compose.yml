@@ -13,9 +13,11 @@ services:
     build:
       context: ./microservices-eureka
     ports:
-      - "9090:9090"
+      - "8761:8761"
     networks:
       - microservices-network
+    depends_on:
+      - config-server
 
   admin-server:
     build:
@@ -24,6 +26,9 @@ services:
       - "9090:9090"
     networks:
       - microservices-network
+    depends_on:
+      - config-server
+      - eureka-server
 
   gateway:
     build:
