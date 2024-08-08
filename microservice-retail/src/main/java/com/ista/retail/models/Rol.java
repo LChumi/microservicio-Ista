@@ -21,7 +21,7 @@ public class Rol {
     private String rol;
     private Boolean estado;
 
-    @ManyToMany(mappedBy = "rol")
+    @ManyToMany(mappedBy = "roles")
     private List<Usuario> usuarios = new ArrayList<>();
 
     @ManyToMany
