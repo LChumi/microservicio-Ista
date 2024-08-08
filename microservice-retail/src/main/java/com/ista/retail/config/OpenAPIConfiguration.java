@@ -12,7 +12,7 @@ public class OpenAPIConfiguration {
     @Bean
     public OpenAPI expenseApi(){
         return new OpenAPI()
-                .info(new Info().title("Facturaxion")
+                .info(new Info().title("Facturacion")
                         .description("Sistema de facturacion")
                         .version("1.0")
                         .license(new License().name("Apache License Version 2.0").url("https://www.apache.org/licenses/LICENSE-2.0"))

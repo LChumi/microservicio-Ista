@@ -27,7 +27,7 @@ public class Usuario {
 
     @ManyToMany
     @JoinTable(
-            name = "usuario_rol", // Nombre de la tabla intermedia
+            name = "usuario_rol",
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id")
     )
