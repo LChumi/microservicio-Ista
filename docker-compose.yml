@@ -1,58 +1,6 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  config-server:
-    build:
-      context: ./microservices-config
-    ports:
-      - "8888:8888"
-    networks:
-      - microservices-network
-
-  eureka-server:
-    build:
-      context: ./microservices-eureka
-    ports:
-      - "8761:8761"
-    networks:
-      - microservices-network
-    depends_on:
-      - config-server
-
-  admin-server:
-    build:
-      context: ./microservices-admin
-    ports:
-      - "9090:9090"
-    networks:
-      - microservices-network
-    depends_on:
-      - config-server
-      - eureka-server
-
-  gateway:
-    build:
-      context: ./microservices-gateway
-    ports:
-      - "8080:8080"
-    networks:
-      - microservices-network
-    depends_on:
-      - config-server
-      - eureka-server
-
-  retail-service:
-    build:
-      context: ./microservice-retail
-    ports:
-      - "8081:8081"
-    networks:
-      - microservices-network
-    depends_on:
-      - config-server
-      - eureka-server
-      - postgres_db
-
   postgres_db:
     container_name: java_db
     image: postgres:16.3
@@ -64,7 +12,67 @@ services:
       POSTGRES_DB: postgres
     networks:
       - microservices-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistencia de datos
+
+  config-server:
+    build:
+      context: ./microservices-config
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - microservices-network
+    depends_on:
+      - postgres_db
+
+  eureka-server:
+    build:
+      context: ./microservices-eureka
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+    depends_on:
+      - config-server
+
+  admin-server:
+    build:
+      context: ./microservices-admin
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    networks:
+      - microservices-network
+    depends_on:
+      - eureka-server
+
+  gateway:
+    build:
+      context: ./microservices-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices-network
+    depends_on:
+      - admin-server
+
+  retail-service:
+    build:
+      context: ./microservice-retail
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-network
+    depends_on:
+      - gateway
 
 networks:
   microservices-network:
     driver: bridge
+
+volumes:
+  postgres_data:
