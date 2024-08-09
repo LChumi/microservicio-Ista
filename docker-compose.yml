@@ -3,7 +3,7 @@ version: '4.2'
 services:
   postgres_db:
     container_name: java_db
-    image: postgres:16.3
+    image: luischumi/postgres:latest
     ports:
       - "5432:5432"
     environment:
@@ -16,9 +16,7 @@ services:
       - postgres_data:/var/lib/postgresql/data  # Persistencia de datos
 
   config-server:
-    build:
-      context: ./microservices-config
-      dockerfile: Dockerfile
+    image: luischumi/microservicio-ista-config-server:latest
     ports:
       - "8888:8888"
     networks:
@@ -27,9 +25,7 @@ services:
       - postgres_db
 
   eureka-server:
-    build:
-      context: ./microservices-eureka
-      dockerfile: Dockerfile
+    image: luischumi/microservicio-ista-eureka-server:latest
     ports:
       - "8761:8761"
     networks:
@@ -38,9 +34,7 @@ services:
       - config-server
 
   admin-server:
-    build:
-      context: ./microservices-admin
-      dockerfile: Dockerfile
+    image: luischumi/microservicio-ista-admin-server:latest
     ports:
       - "9090:9090"
     networks:
@@ -49,9 +43,7 @@ services:
       - eureka-server
 
   gateway:
-    build:
-      context: ./microservices-gateway
-      dockerfile: Dockerfile
+    image: luischumi/microservicio-ista-gateway:latest
     ports:
       - "8080:8080"
     networks:
@@ -60,9 +52,7 @@ services:
       - admin-server
 
   retail-service:
-    build:
-      context: ./microservice-retail
-      dockerfile: Dockerfile
+    image: luischumi/microservicio-ista-retail-service:latest
     ports:
       - "8081:8081"
     networks:
